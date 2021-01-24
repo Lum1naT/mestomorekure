@@ -4,7 +4,7 @@ class CategoryGenerator extends React.Component{
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {categories: []};
       }
 
 
@@ -21,7 +21,7 @@ class CategoryGenerator extends React.Component{
 
         return (
         <div>
-          
+            <input type="number" min="0" placeholder="NUMBER OF CATEGORIES"/>
         </div>
 
         );

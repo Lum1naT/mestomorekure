@@ -30,8 +30,10 @@ class Timer extends React.Component{
 
   }
 
-      startTimer(){
 
+      startTimer(){
+        this.hideButton('start');
+        this.showButton('stop');
         if(this.state.currentTime === 0){
             this.setState(state => ({
                 currentTime: state.startTime,
@@ -51,6 +53,7 @@ class Timer extends React.Component{
             ticking: true,
           }));
           
+        
 
       }
 
@@ -64,6 +67,9 @@ class Timer extends React.Component{
       }
 
       stopTimer(){
+
+        this.hideButton('stop');
+        this.showButton('start');
         clearInterval(this.interval);
 
         this.setState(state => ({
@@ -93,6 +99,16 @@ class Timer extends React.Component{
         input.focus();
         input.select();
 
+      }
+
+      showButton(type){
+        const button = document.getElementById(type + '-button');
+        button.style.display = "block";
+      }
+
+      hideButton(type){
+        const button = document.getElementById(type + '-button');
+        button.style.display = "none";
       }
 
       
