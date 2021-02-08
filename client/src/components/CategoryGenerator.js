@@ -44,8 +44,11 @@ class CategoryGenerator extends React.Component{
       renderCategories(input){
         document.getElementById("category-list").innerHTML = "";
         for(var i = 0; i < input.length; i++){
+          var span = document.createElement('span');
           var node = document.createElement('li');
-          node.appendChild(document.createTextNode(input[i]));
+          span.appendChild(document.createTextNode(input[i]));
+          node.appendChild(span);
+          span.className = "strikeout";
           document.getElementById("category-list").appendChild(node);
         }
 

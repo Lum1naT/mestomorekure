@@ -2,6 +2,26 @@ $color-primary: #000000;
 $color-secondary: #ffffff;
 $color-transparent: rgba(0, 0, 0, 0);
 
+@keyframes strikeout-show {
+  0% {
+    color: $color-transparent;
+  }
+
+  100% {
+    color: $color-secondary;
+  }
+}
+
+@keyframes strikeout-hide {
+  0% {
+    color: $color-secondary;
+  }
+
+  100% {
+    color: $color-transparent;
+  }
+}
+
 .toggle-repeat-btn {
   background-color: $color-transparent;
   color: $color-secondary;
@@ -22,6 +42,23 @@ div .new-categories-btn {
   align-content: center;
   cursor: pointer;
   color: $color-secondary;
+}
+
+.strikeout {
+  font-size: 2em;
+  line-height: 1em;
+  position: relative;
+  color: $color-secondary;
+  animation: 1s ease infinite strikeout-hide;
+}
+.strikeout::after {
+  border-bottom: 1em solid $color-secondary;
+  content: '';
+  left: 0;
+  margin-top: calc(1em / 2 * -1);
+  position: absolute;
+  right: 0;
+  top: 50%;
 }
 
 .category-number-input {
