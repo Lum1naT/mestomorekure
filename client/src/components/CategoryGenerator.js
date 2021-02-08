@@ -34,7 +34,20 @@ class CategoryGenerator extends React.Component{
       }
 
       setNumberOfCategories(event){
-        console.log(event.target.value);
+        var input = event.target.value;
+        if(input === ""){
+          this.setState(state => ({
+              numberOfCategories: 0,
+            }));
+          } else if (input.startsWith('0')) {
+            this.setState(state => ({
+              numberOfCategories: input.substring(1, input.length),
+            }));
+          } else {
+            this.setState(state => ({
+              numberOfCategories: input,
+            }));
+          }
       }
 
 
