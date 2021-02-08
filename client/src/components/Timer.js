@@ -12,6 +12,8 @@ class Timer extends React.Component{
         this.setState(state => ({
             currentTime: state.startTime
           }));
+
+          this.hideButton('stop');
         
 
       }
@@ -102,12 +104,12 @@ class Timer extends React.Component{
       }
 
       showButton(type){
-        const button = document.getElementById(type + '-button');
+        const button = document.getElementById(type + '-btn');
         button.style.display = "block";
       }
 
       hideButton(type){
-        const button = document.getElementById(type + '-button');
+        const button = document.getElementById(type + '-btn');
         button.style.display = "none";
       }
 
@@ -119,9 +121,9 @@ class Timer extends React.Component{
         return (
         <div>
             <input id="time" type="number" min="0"  value={this.state.currentTime} onFocus={() => this.selectInput()} onChange={(event) => this.setStart(event)}/>
-            <button id="start-button" onClick={() => this.startTimer()}>Start</button>
-             <button id="stop-button"  onClick={() => this.stopTimer()}>Stop</button>
-             <button id="reset-button" onClick={() => this.resetTimer()}>Reset</button>
+            <div id="start-btn" onClick={() => this.startTimer()}>Start</div>
+             <div id="stop-btn"  onClick={() => this.stopTimer()}>Stop</div>
+             <div id="reset-btn" onClick={() => this.resetTimer()}>Reset</div>
         </div>
 
         );

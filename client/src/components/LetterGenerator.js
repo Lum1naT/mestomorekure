@@ -72,10 +72,11 @@ class LetterGenerator extends React.Component{
     render(){
 
         return (
-        <div>
-          <button onClick={() => this.toggleRepeat()}>{this.state.repeatText}</button>
-            <b>{this.state.currentLetter}</b>
-            <button onClick={() => this.generateLetter()}>re-roll</button>
+        <div className="letter-generator">
+          <b id="letter">{this.state.currentLetter}</b><br/>
+          <div className="reroll-btn" onClick={() => this.generateLetter()}>re-roll</div><br/>
+
+          <div className="toggle-repeat-btn" onClick={() => this.toggleRepeat()}>{this.state.repeatText}</div><br/>
         </div>
 
         );
