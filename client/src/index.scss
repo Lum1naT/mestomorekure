@@ -9,15 +9,43 @@ $color-transparent: rgba(0, 0, 0, 0);
   font-size: 1.5rem;
 }
 
-.categoryNumberInput {
-  width: 95%;
+div .number-of-categories {
+  float: left;
+}
+
+div .new-categories-btn {
+  color: $color-secondary;
+  cursor: pointer;
+}
+
+.symbol {
+  align-content: center;
+  cursor: pointer;
+  color: $color-secondary;
+}
+
+.category-number-input {
+  width: 10%;
   font-size: 2rem;
   padding: 15px;
   color: $color-secondary;
   background-color: $color-transparent;
   outline: none;
   border: 3px solid $color-transparent;
+  display: inline;
   text-align: center;
+}
+
+.max + span:after {
+  content: 'max';
+  color: $color-secondary;
+  display: inline;
+  position: relative;
+}
+
+.category-list {
+  height: 30%;
+  overflow: auto;
 }
 
 .category-list > li {
@@ -60,6 +88,8 @@ $color-transparent: rgba(0, 0, 0, 0);
   border: $color-secondary;
   border-style: solid;
   flex-grow: 2;
+  display: flex;
+  flex-direction: row;
 }
 
 .letter-generator {
@@ -76,6 +106,13 @@ $color-transparent: rgba(0, 0, 0, 0);
   flex-direction: row;
 }
 
+.minus-icon {
+  color: $color-secondary;
+}
+
+.plus-icon {
+  color: $color-secondary;
+}
 body {
   background-color: $color-primary;
   font-family: 'Courier New';

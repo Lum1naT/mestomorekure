@@ -5,15 +5,43 @@
   font-size: 1.5rem;
 }
 
-.categoryNumberInput {
-  width: 95%;
+div .number-of-categories {
+  float: left;
+}
+
+div .new-categories-btn {
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.symbol {
+  align-content: center;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.category-number-input {
+  width: 10%;
   font-size: 2rem;
   padding: 15px;
   color: #ffffff;
   background-color: rgba(0, 0, 0, 0);
   outline: none;
   border: 3px solid rgba(0, 0, 0, 0);
+  display: inline;
   text-align: center;
+}
+
+.max + span:after {
+  content: "max";
+  color: #ffffff;
+  display: inline;
+  position: relative;
+}
+
+.category-list {
+  height: 30%;
+  overflow: auto;
 }
 
 .category-list > li {
@@ -56,6 +84,8 @@
   border: #ffffff;
   border-style: solid;
   flex-grow: 2;
+  display: flex;
+  flex-direction: row;
 }
 
 .letter-generator {
@@ -70,6 +100,14 @@
   border-style: solid;
   display: flex;
   flex-direction: row;
+}
+
+.minus-icon {
+  color: #ffffff;
+}
+
+.plus-icon {
+  color: #ffffff;
 }
 
 body {
