@@ -8,6 +8,7 @@ class CategoryGenerator extends React.Component{
     constructor(props) {
         super(props);
         this.state = {numberOfCategories: 10, categories: ['Cat1', 'Cat2', 'Cat3', 'Cat4', 'Cat5', 'Cat6', 'Cat7', 'Cat8', 'Cat9', 'Cat10', 'Cat11', 'Cat12', 'Cat13', 'Cat14', 'Cat15']};
+        this.currentCategories = [];
       }
 
 
@@ -36,23 +37,52 @@ class CategoryGenerator extends React.Component{
           result.push(categoriesArr[randomNum]);
           numsUsed.push(randomNum);
         }
-        //finally 
-        this.renderCategories(result);
+        //finally
+        this.state.currentCategories = result; 
+        var shown = "show"
+        this.renderCategories(result, shown);
 
       }
 
-      renderCategories(input){
+      showCategories(){
+        var result = this.state.currentCategories;
+        var shown = "show";
+
+       
+        //finally 
+        this.renderCategories(result, shown);
+
+      }
+      
+      hideCategories(){
+        var result = this.state.currentCategories;
+        var shown = "strikeout";
+       
+        //finally 
+        this.renderCategories(result, shown);
+
+      }
+
+
+      renderCategories(input, shown){
         document.getElementById("category-list").innerHTML = "";
+
         for(var i = 0; i < input.length; i++){
           var span = document.createElement('span');
           var node = document.createElement('li');
           span.appendChild(document.createTextNode(input[i]));
           node.appendChild(span);
-          span.className = "strikeout";
+         /* span.className = "strikeout"; */ 
+          span.className = shown;
           document.getElementById("category-list").appendChild(node);
         }
 
       }
+
+      /* 
+      >CLEANING
+      This can be done cleaner, by using following method and adding or substracting from original value - then delete the two following methods
+      */
 
       setNumberOfCategories(event){
         const categoriesArr = this.state.categories;
@@ -141,9 +171,13 @@ class CategoryGenerator extends React.Component{
             
           </div>
 
-            <div className="new-categories-btn" onClick={() => this.generateCategories()}> new categories </div>
+          <div className="new-categories-btn" onClick={() => this.generateCategories()}> new categories </div>
+          
             <ol className="category-list" id="category-list">
             </ol>
+
+            <div className="new-categories-btn" onClick={() => this.showCategories()}> show categories </div>
+            <div className="new-categories-btn" onClick={() => this.hideCategories()}> hide categories </div>
         </div>
 
         );

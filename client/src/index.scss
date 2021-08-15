@@ -1,24 +1,44 @@
 $color-primary: #000000;
 $color-secondary: #ffffff;
 $color-transparent: rgba(0, 0, 0, 0);
+$item-size : 1em;
 
-@keyframes strikeout-show {
-  0% {
-    color: $color-transparent;
-  }
 
-  100% {
-    color: $color-secondary;
-  }
-}
 
 @keyframes strikeout-hide {
   0% {
-    color: $color-secondary;
+    width: 0%;
+    color: $color-transparent;
+
   }
 
-  100% {
+  99% {
+    width: 99%;
     color: $color-transparent;
+
+  }
+  100% {
+    width: 100%;
+    color: $color-secondary;
+
+  }
+}
+
+
+@keyframes strikeout-show {
+  0% {
+    width: 100%;
+  }
+
+  99% {
+    width: 1%;
+
+  }
+  100% {
+    width: 0%;
+    height: 0%;
+    
+
   }
 }
 
@@ -44,21 +64,43 @@ div .new-categories-btn {
   color: $color-secondary;
 }
 
-.strikeout {
-  font-size: 2em;
-  line-height: 1em;
+.show{
+  line-height: $item-size;
+  font-size: $item-size;
+  animation: 1s forwards strikeout-show;
   position: relative;
-  color: $color-secondary;
-  animation: 1s ease infinite strikeout-hide;
+
 }
-.strikeout::after {
-  border-bottom: 1em solid $color-secondary;
+
+.show::after {
+  border-bottom: $item-size*1.4 solid $color-secondary;
   content: '';
   left: 0;
-  margin-top: calc(1em / 2 * -1);
+  margin-top: calc($item-size / 2 * -1);
   position: absolute;
   right: 0;
-  top: 50%;
+  top: calc($item-size / 2 * -1);
+  animation: 1s forwards strikeout-show;
+
+}
+
+.strikeout {
+  font-size: $item-size;
+  line-height: $item-size;
+  position: relative;
+  color: $color-secondary;
+  animation: 1s forwards strikeout-hide;
+}
+.strikeout::after {
+  border-bottom: $item-size*1.4 solid $color-secondary;
+  content: '';
+  left: 0;
+  margin-top: calc($item-size / 2 * -1);
+  position: absolute;
+  right: 0;
+  top: calc($item-size / 2 * -1);
+  animation: 1s forwards strikeout-hide;
+
 }
 
 .category-number-input {
@@ -81,13 +123,16 @@ div .new-categories-btn {
 }
 
 .category-list {
-  height: 30%;
+  height: 40%;
   overflow: auto;
+  font-size: $item-size;
+  color: $color-secondary;
+
 }
 
 .category-list > li {
-  color: $color-secondary;
   text-align: left;
+  font-size: $item-size;
 }
 
 .reroll-btn {

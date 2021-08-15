@@ -1,17 +1,27 @@
-@keyframes strikeout-show {
+@keyframes strikeout-hide {
   0% {
+    width: 0%;
+    color: rgba(0, 0, 0, 0);
+  }
+  99% {
+    width: 99%;
     color: rgba(0, 0, 0, 0);
   }
   100% {
+    width: 100%;
     color: #ffffff;
   }
 }
-@keyframes strikeout-hide {
+@keyframes strikeout-show {
   0% {
-    color: #ffffff;
+    width: 100%;
+  }
+  99% {
+    width: 1%;
   }
   100% {
-    color: rgba(0, 0, 0, 0);
+    width: 0%;
+    height: 0%;
   }
 }
 .toggle-repeat-btn {
@@ -36,22 +46,41 @@ div .new-categories-btn {
   color: #ffffff;
 }
 
+.show {
+  line-height: 1em;
+  font-size: 1em;
+  animation: 1s forwards strikeout-show;
+  position: relative;
+}
+
+.show::after {
+  border-bottom: 1.4em solid #ffffff;
+  content: "";
+  left: 0;
+  margin-top: calc($item-size / 2 * -1);
+  position: absolute;
+  right: 0;
+  top: calc($item-size / 2 * -1);
+  animation: 1s forwards strikeout-show;
+}
+
 .strikeout {
-  font-size: 2em;
+  font-size: 1em;
   line-height: 1em;
   position: relative;
   color: #ffffff;
-  animation: 1s ease infinite strikeout-hide;
+  animation: 1s forwards strikeout-hide;
 }
 
 .strikeout::after {
-  border-bottom: 1em solid #ffffff;
+  border-bottom: 1.4em solid #ffffff;
   content: "";
   left: 0;
-  margin-top: calc(1em / 2 * -1);
+  margin-top: calc($item-size / 2 * -1);
   position: absolute;
   right: 0;
-  top: 50%;
+  top: calc($item-size / 2 * -1);
+  animation: 1s forwards strikeout-hide;
 }
 
 .category-number-input {
@@ -74,13 +103,15 @@ div .new-categories-btn {
 }
 
 .category-list {
-  height: 30%;
+  height: 40%;
   overflow: auto;
+  font-size: 1em;
+  color: #ffffff;
 }
 
 .category-list > li {
-  color: #ffffff;
   text-align: left;
+  font-size: 1em;
 }
 
 .reroll-btn {
